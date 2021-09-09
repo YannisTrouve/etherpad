@@ -17,7 +17,7 @@ services:
     environment:
       - ADMIN_PASSWORD=admin
     ports:
-      - 8080:8080
+      - "9001:9001"
     networks:
       - apps
     volumes:
