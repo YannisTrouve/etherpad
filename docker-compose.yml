@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  etherpad-db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=etherpad
+      - POSTGRES_USER=etherpad
+      - POSTGRES_PASSWORD=etherpad
+    networks:
+      - apps
+
+  etherpad-app:
+    build:
+      context: .
+      dockerfile : Dockerfile
+    environment:
+      - ADMIN_PASSWORD=admin
+    ports:
+      - 8080:8080
+    networks:
+      - apps
+    volumes:
+      - etherpad_data:/etherpad
+
+volumes:
+  etherpad_data:
+
+networks:
+  apps:
+
