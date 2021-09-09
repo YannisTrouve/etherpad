@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   etherpad-db:
+    container_name: "database"
     image: postgres
     environment:
       - POSTGRES_DB=etherpad
@@ -15,7 +16,7 @@ services:
       context: .
       dockerfile : Dockerfile
     environment:
-      - ADMIN_PASSWORD=admin
+      - ADMIN_PASSWORD=admin  
     ports:
       - "9001:9001"
     networks:
